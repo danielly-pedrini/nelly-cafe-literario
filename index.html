@@ -7,11 +7,18 @@
     <title>Café Literário Nelly — Onde o tempo para</title>
 </head>
 <body>
-    <!-- HEADER -->
+   <!-- HEADER -->
     <header id="header">
         <nav>
             <img src="./img/logo.png" alt="Logo Café Literário Nelly" class="logo-nav">
-            <ul>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul id="navMenu">
                 <li><a href="#inicio">Início</a></li>
                 <li><a href="#sobre">Sobre</a></li>
                 <li><a href="#cardapio">Cardápio</a></li>
@@ -273,6 +280,24 @@
     </footer>
 
     <script>
+        // Menu Hambúrguer
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = navMenu.querySelectorAll('a');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Fechar menu ao clicar em um link
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
         // Animação de entrada das seções
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -288,9 +313,6 @@
             observer.observe(section);
         });
     </script>
-    <script 
- async 
- src="https://app.gptmaker.ai/widget/3E8ECF236952225E2C8062BAA00B8121/float.js">
-</script>
+    <script async src="https://app.gptmaker.ai/widget/3E8ECF236952225E2C8062BAA00B8121/float.js"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
-
-        @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap');
         
         * {
             margin: 0;
@@ -91,6 +90,35 @@
         
         nav a:hover::after {
             width: 100%;
+        }
+
+        /* MENU HAMBÚRGUER */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--marrom);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
         }
         
         /* HERO IMERSIVO */
@@ -341,6 +369,7 @@
             height: 450px;
             border: none;
         }
+
         footer {
             background: var(--marrom-escuro);
             color: var(--bege-claro);
@@ -353,30 +382,34 @@
             opacity: 0.9;
         }
         
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .social-links a {
-            color: var(--bege-claro);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.5rem;
-        }
-        
-        .social-links a:hover {
-            color: var(--verde-suave);
-            transform: translateY(-3px);
-        }
-        
         /* RESPONSIVO */
         @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
             nav ul {
-                gap: 1.5rem;
-                font-size: 0.85rem;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(245, 241, 232, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav a {
+                font-size: 1.2rem;
             }
             
             .hero h1 {
@@ -388,7 +421,7 @@
             }
             
             .logo-hero {
-                width: 150px;
+                width: 200px;
                 height: 150px;
             }
             
@@ -402,6 +435,14 @@
             
             .menu-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .sobre {
+                padding: 3rem 5%;
+            }
+
+            .sobre-content p {
+                font-size: 1.1rem;
             }
         }
   
